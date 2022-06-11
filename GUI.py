@@ -1,7 +1,7 @@
 '''
 Author: Bemake
 Date: 2022-06-10 17:23:57
-LastEditTime: 2022-06-10 18:16:14
+LastEditTime: 2022-06-11 17:27:57
 Description: 如果代码出现问题请联系本人邮箱:271374667@qq.com
 '''
 import logging
@@ -25,6 +25,9 @@ def GUI():
             
     # 打开文件夹
     smartSortTabbed.add_argument('opendir',metavar='打开文件夹目录',help='请在这里选择你需要转换成EPUB的小说目录',widget='DirChooser')
+    
+    # 增加说明类
+    
             
     # 在互斥分组内添加选项
     # smartSortTabbed.add_argument('--smart',metavar="智能排序（推荐）",help='使用智能转换，将小说前面自带的章节数字转换成阿拉伯数字再进行排序',action='store_true')
@@ -47,7 +50,9 @@ def GUI():
     more.add_argument('--filter',metavar="过滤字符串",help="如果你在元素里面发现一些特殊的字符串，并且他们大量出现在你的小说里面 \
                         那么你可以尝试在这里输入他们来屏蔽这些字符串,比如 <欢迎来到XX小说网> 你也可以同时输入多个值,他们之间用 \\n 隔开",widget="Textarea",
                         gooey_options={
-                            'height': 100
+                            'height': 100,
+                            'show_label': True,
+                            'show_help': True,
                         })
     
     # 最终显示我们的图形化界面
@@ -60,7 +65,7 @@ def GUI():
 # 调用GUI的同时返回变量，方便我们主程序引用
 # Args我们GUI的输出
 Args = GUI()
-print(Args) 
+#print(Args) 
 
 # 番外的权重(默认为10W)
 sideStoryWeight = 100000
@@ -70,7 +75,7 @@ spaceNumber = Args.space
 
 # 过滤的关键词(默认为无,默认的分割符为\n)
 filterWord = list(Args.filter.split("\\n")) if Args.filter != None else None
-print(filterWord)
+#logging.info(filterWord)
 
 # 新建当前文件夹下所有的文件名
 currentDirAllFileNameList = []

@@ -57,7 +57,7 @@ def printToFile():
                     
                     # 给我们的小说换行
                     for _ in range(int(GUI.spaceNumber)):
-                        f2.write("\n")
+                        f2.write("<br> \n")
 
         logging.info(f'目前打印了{counter}次,正在打印\t{each_file}')
 
@@ -78,7 +78,7 @@ def smartSortStart():
         # 使用守卫if单独处理我们的废话
         if eachFile.find('章') == -1 and eachFile.find('第') == -1:
             # 根据权重
-            if GUI.gooeyArgs.sideStory == '最后面':                 
+            if GUI.Args.sideStory == '最后面':                 
                 GUI.AllFileSortedList.append((GUI.sideStoryWeight, eachFile))
             
             else:
